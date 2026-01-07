@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .btn-primary {
+    @apply m-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium max-w-[200px];
+  }
+  .btn-secondary {
+    @apply px-3 py-1 bg-gray-400 border-stone-700 border-2 text-gray-800 rounded-lg hover:bg-gray-400 transition-colors font-medium;
+  }
+  .btn-danger {
+    @apply px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors font-medium;
+  }
+
+
+  .input-field {
+    @apply bg-white w-[200px] px-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 max-w-[200px];
+  }
+
+  .card {
+    @apply bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow;
+  }
+
+  .header {
+    @apply text-3xl font-bold;
+  }
+
+  .user-command-tailwind {
+    @apply my-3 text-red-600;
+  }
+
+  .page-tailwind {
+    @apply py-5 px-10 flex flex-col h-[90vh];
+  }
+
+
+  .book-card-tailwind {
+    @apply flex flex-col items-center;
+  }
+  .book-container-tailwind {
+    @apply grid grid-cols-4 gap-4;
+  }
+
+
+  .book-details-0 {
+    @apply p-5 flex flex-col;
+  }
+  .book-details-1 {
+    @apply flex items-center;
+  }
+  .book-details-2 {
+    @apply text-lg font-[500] py-3;
+  }
+  .book-details-3 {
+    @apply px-3;
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@fortawesome/fontawesome-svg-core": "^7.1.0",
+    "ajv": "^8.17.1",
+    "axios": "^1.13.2",
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1",
+    "react-flexible-star-rating": "^1.0.7",
+    "react-redux": "^9.2.0",
+    "react-scripts": "^5.0.1"
+  },
+  "devDependencies": {
+    "@mui/material": "^7.3.6",
+    "@reduxjs/toolkit": "^2.11.1",
+    "@testing-library/jest-dom": "^6.0.0",
+    "@testing-library/react": "^16.3.1",
+    "autoprefixer": "^10.4.22",
+    "postcss": "^8.5.6",
+    "react-bootstrap": "^2.10.10",
+    "react-router-dom": "^7.10.1",
+    "redux": "^5.0.1",
+    "tailwindcss": "^3.4.19"
+  },
+  "name": "frontend",
+  "version": "1.0.0",
+  "description": "Austin Jerich personal webpage",
+  "main": "index.js",
+  "scripts": {
+    "test": "react-scripts test --watchAll=false --env=jsdom",
+    "start": "react-scripts start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AJJ22/AustinJerich"
+  },
+  "keywords": [
+    "Austin",
+    "Jerich",
+    "webpage"
+  ],
+  "author": "Austin Jerich",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AJJ22/AustinJerich/issues"
+  },
+  "homepage": "https://AustinJerich",
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

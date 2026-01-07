@@ -1,0 +1,15 @@
+{
+  "short_name": "AJJ22",
+  "name": "Austin Jerich",
+  "icons": [
+    {
+      "src": "current_headshot_75x75.jpg",
+      "sizes": "75x75",
+      "type": "image/x-icon"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
