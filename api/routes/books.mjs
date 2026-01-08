@@ -44,7 +44,7 @@ export function createRouter(repository = bookRepository) {
         return res.status(400).json({ message: "array not allowed" })
       }
       const result = await repository.create(req.body)
-      return res.status(200).json(result)
+      return res.status(201).json(result)
     }
     catch(e){
       console.log(e)
@@ -75,13 +75,13 @@ export function createRouter(repository = bookRepository) {
   })
 
   //delete an existing book
-  router.delete("/:id", async (req, res) => {    
+  router.delete("/:id", async (req, res) => {
     try{
       if (!ObjectId.isValid(req.params.id)) {
         return res.status(400).json({ message: "invalid id" })
       }
       await repository.delete(req.params.id)
-      return res.status(204).json({ message: "delete successful" })
+      return res.status(204)
     }
     catch(e){
       console.log(e)
