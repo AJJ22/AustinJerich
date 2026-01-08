@@ -13,3 +13,4 @@ build
 # misc
 .env
 npm-debug.log*
+vercel r*
