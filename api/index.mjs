@@ -21,8 +21,8 @@ app.use((err, _req, res, next) => {
   res.status(500).send("Uh oh! An unexpected error occured.")
 })
 
-if (process.env.NODE_ENV !== 'test') {
-  // Start the server
+// For local development only
+if (process.env.NODE_ENV !== 'test' && process.env.VERCEL !== '1') {
   app.listen(port, () => {
     console.log(`API listening at http://localhost:${port}`)
   })
