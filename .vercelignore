@@ -1,4 +1,3 @@
 api/db/**
 api/routes/**
 api/test/**
-api/loadEnvironment.mjs
