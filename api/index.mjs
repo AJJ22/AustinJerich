@@ -3,7 +3,6 @@ import cors from "cors"
 import "./loadEnvironment.mjs"
 import books from "./routes/books.mjs"
 
-
 const app = express()
 const port = process.env.PORT || 3001
 
@@ -21,8 +20,9 @@ app.use((err, _req, res, next) => {
   res.status(500).send("Uh oh! An unexpected error occured.")
 })
 
-// For local development only
-if (process.env.NODE_ENV !== 'test' && process.env.VERCEL !== '1') {
+// Only listen in development (not in serverless environment)
+const isServerless = process.env.VERCEL === '1' || process.env.AWS_LAMBDA_FUNCTION_NAME
+if (process.env.NODE_ENV !== 'test' && !isServerless) {
   app.listen(port, () => {
     console.log(`API listening at http://localhost:${port}`)
   })
