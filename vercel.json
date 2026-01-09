@@ -7,7 +7,7 @@
       "dest": "/api/index.mjs"
     },
     {
-      "src": "/(.*)",
+      "src": "/(?!(api|static|manifest|robots|favicon))(.*)",
       "dest": "/index.html"
     }
   ]
