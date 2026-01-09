@@ -4,7 +4,6 @@ import "./loadEnvironment.mjs"
 import books from "./routes/books.mjs"
 
 const app = express()
-const port = process.env.PORT || 3001
 
 app.use(express.json()) // Add this line to parse JSON bodies
 
@@ -17,12 +16,13 @@ app.use("/books", books)
 
 // Global error handling
 app.use((err, _req, res, next) => {
-  res.status(500).send("Uh oh! An unexpected error occured.")
+  console.error(err)
+  res.status(500).send("UNEXPECTED ERROR! WHOOPS!")
 })
 
-// Only listen in development (not in serverless environment)
-const isServerless = process.env.VERCEL === '1' || process.env.AWS_LAMBDA_FUNCTION_NAME
-if (process.env.NODE_ENV !== 'test' && !isServerless) {
+// Development server only
+if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL) {
+  const port = process.env.PORT || 3001
   app.listen(port, () => {
     console.log(`API listening at http://localhost:${port}`)
   })
