@@ -14,7 +14,7 @@ app.use(cors({
   origin: process.env.CORS_ORIGIN || '*' // set CORS_ORIGIN in .env for production
 }))
 
-app.use("/books", books)
+app.use("/api/routes/books", books)
 
 // Global error handling
 app.use((err, _req, res, next) => {
