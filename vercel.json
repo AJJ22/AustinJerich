@@ -2,8 +2,8 @@
   "buildCommand": "npm install --prefix ./api && cd frontend && npm install && npm run build",
   "outputDirectory": "frontend/build",
   "functions": {
-    "api/**/*.mjs": {
-      "excludeFiles": "api/{db,routes,test}/**"
+    "api/index.mjs": {
+      "includeFiles": "api/**"
     }
   },
   "routes": [
