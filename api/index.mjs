@@ -5,7 +5,13 @@ import books from "./routes/books.mjs"
 
 const app = express()
 
-app.use(express.json()) // Add this line to parse JSON bodies
+app.use(express.json())
+
+// Log all incoming requests
+app.use((req, res, next) => {
+  console.log(`[${new Date().toISOString()}] ${req.method} ${req.path}`)
+  next()
+})
 
 // allow requests from your React dev server (or all origins during development)
 app.use(cors({

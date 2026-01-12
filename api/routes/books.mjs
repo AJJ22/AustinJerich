@@ -2,7 +2,7 @@ import express from "express"
 import bookRepository from "../db/bookRepository.mjs"
 import { ObjectId } from "mongodb"
 
-export function createRouter(repository = bookRepository) {
+function createRouter(repository = bookRepository) {
   const router = express.Router()
 
   //get all books
@@ -81,7 +81,7 @@ export function createRouter(repository = bookRepository) {
         return res.status(400).json({ message: "invalid id" })
       }
       await repository.delete(req.params.id)
-      return res.status(204)
+      return res.status(204).send()
     }
     catch(e){
       console.log(e)
@@ -92,4 +92,5 @@ export function createRouter(repository = bookRepository) {
   return router
 }
 
+export { createRouter }
 export default createRouter()
