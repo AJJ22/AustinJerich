@@ -1,5 +1,5 @@
 import express from "express"
-import bookRepository from "../db/bookRepository.mjs"
+import bookRepository from "../_db/bookRepository.mjs"
 import { ObjectId } from "mongodb"
 
 function createRouter(repository = bookRepository) {

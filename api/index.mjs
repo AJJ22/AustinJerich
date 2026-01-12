@@ -1,7 +1,7 @@
 import express from "express"
 import cors from "cors"
-import "./loadEnvironment.mjs"
-import books from "./routes/books.mjs"
+import "./_loadEnvironment.mjs"
+import books from "./_routes/books.mjs"
 
 const app = express()
 

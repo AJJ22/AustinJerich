@@ -2,7 +2,7 @@ import { test } from 'node:test'
 import assert from 'node:assert'
 import express from 'express'
 import request from 'supertest'
-import { createRouter } from '../routes/books.mjs'
+import { createRouter } from '../_routes/books.mjs'
 import { MockBookRepository, sampleBooks } from './mocks/bookRepository.mock.mjs'
 
 // Helper function to create Express app with mocked repository
