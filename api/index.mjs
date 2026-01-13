@@ -14,7 +14,6 @@ app.use((req, res, next) => {
   try{
     console.log('handler invoked!')
     console.log(`[${new Date().toISOString()}] ${req.method} ${req.path}`)
-    res.status(200).json({ message: 'Success' });
     next()
   }
   catch(e){
