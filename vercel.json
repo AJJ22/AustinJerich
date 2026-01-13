@@ -1,6 +1,12 @@
 {
   "buildCommand": "npm install --prefix ./api && cd frontend && npm install && npm run build",
   "outputDirectory": "frontend/build",
+  "builds": [
+    {
+      "src": "index.mjs",
+      "use": "@vercel/node"
+    }
+  ],
   "functions": {
     "api/index.mjs": {
       "includeFiles": "api/**"
