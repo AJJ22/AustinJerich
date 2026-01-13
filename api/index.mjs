@@ -1,7 +1,9 @@
 import express from "express"
 import cors from "cors"
 import "./_loadEnvironment.mjs"
-import books from "./_routes/books.mjs"
+import createRouter from "./_routes/books.mjs"
+
+console.log("Starting API initialization...")
 
 const app = express()
 
@@ -18,7 +20,7 @@ app.use(cors({
   origin: process.env.CORS_ORIGIN || '*' // set CORS_ORIGIN in .env for production
 }))
 
-app.use("/books", books)
+app.use("/books", createRouter)
 
 // Global error handling
 app.use((err, _req, res, next) => {
