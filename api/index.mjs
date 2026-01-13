@@ -11,8 +11,16 @@ app.use(express.json())
 
 // Log all incoming requests
 app.use((req, res, next) => {
-  console.log(`[${new Date().toISOString()}] ${req.method} ${req.path}`)
-  next()
+  try{
+    console.log('handler invoked!')
+    console.log(`[${new Date().toISOString()}] ${req.method} ${req.path}`)
+    res.status(200).json({ message: 'Success' });
+    next()
+  }
+  catch(e){
+    console.error('Error in handler: ',e)
+    res.status(500).json({ error: e.message })
+  }
 })
 
 // allow requests from your React dev server (or all origins during development)
