@@ -28,12 +28,4 @@ app.use((err, _req, res, next) => {
   res.status(500).send("UNEXPECTED ERROR! WHOOPS!")
 })
 
-// Development server only
-
-  const port = process.env.PORT || 3001
-  app.listen(port, () => {
-    console.log(`API listening at http://localhost:${port}`)
-  })
-
-
 export default app
