@@ -29,11 +29,11 @@ app.use((err, _req, res, next) => {
 })
 
 // Development server only
-if (!process.env.VERCEL) {
+
   const port = process.env.PORT || 3001
   app.listen(port, () => {
     console.log(`API listening at http://localhost:${port}`)
   })
-}
+
 
 export default app
