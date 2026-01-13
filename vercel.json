@@ -7,11 +7,6 @@
       "use": "@vercel/node"
     }
   ],
-  "functions": {
-    "api/index.mjs": {
-      "includeFiles": "api/**"
-    }
-  },
   "routes": [
     {
       "src": "/api/.*",
