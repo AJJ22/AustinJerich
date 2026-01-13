@@ -5,15 +5,5 @@
     "api/index.mjs": {
       "includeFiles": "api/**"
     }
-  },
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/api/index.mjs"
-    },
-    {
-      "src": "/(?!(api|static|manifest|robots|favicon))(.*)",
-      "dest": "/index.html"
-    }
-  ]
+  }
 }
