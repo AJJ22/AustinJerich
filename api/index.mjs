@@ -3,8 +3,6 @@ import cors from "cors"
 import "./_loadEnvironment.mjs"
 import createRouter from "./_routes/books.mjs"
 
-console.log("Starting API initialization...")
-
 const app = express()
 
 app.use(express.json())
@@ -12,7 +10,6 @@ app.use(express.json())
 // Log all incoming requests
 app.use((req, res, next) => {
   try{
-    console.log('handler invoked!')
     console.log(`[${new Date().toISOString()}] ${req.method} ${req.path}`)
     next()
   }
