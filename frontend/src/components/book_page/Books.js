@@ -5,7 +5,7 @@ import BookList from './BookList'
 import ErrorDisplay from './ErrorDisplay.js'
 
 export default function BooksPage() {
-  const [refreshKey, setRefreshKey] = useState(0);
+  const [refreshKey, setRefreshKey] = useState(0)
   return (
     <div>
         <NavBar />

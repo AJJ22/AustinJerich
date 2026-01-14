@@ -1,5 +1,5 @@
-import portrait from './../images/156x182.jpg';
-import NavBar from './NavBar.js';
+import portrait from './../images/156x182.jpg'
+import NavBar from './NavBar.js'
 
 export default function home(){
     return (

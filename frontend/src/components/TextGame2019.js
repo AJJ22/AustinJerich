@@ -1,22 +1,22 @@
-import NavBar from './NavBar.js';
-import { useGameLogic } from '../TextGame2019/gameController.js';
-import { useRef, useEffect } from 'react';
+import NavBar from './NavBar.js'
+import { useGameLogic } from '../TextGame2019/gameController.js'
+import { useRef, useEffect } from 'react'
 
 export default function TextGame2019() {
-    const messageEndRef = useRef(null);
+    const messageEndRef = useRef(null)
     const {
             messages,
             inputValue,
             setInputValue,
             sendMessage,
             handleKeyDown,
-    } = useGameLogic();
+    } = useGameLogic()
 
     useEffect(() => {
         if (messageEndRef.current) {
-            messageEndRef.current.scrollIntoView({ behavior: 'smooth' });
+            messageEndRef.current.scrollIntoView({ behavior: 'smooth' })
         }
-    }, [messages]);
+    }, [messages])
 
     return(
         <div>

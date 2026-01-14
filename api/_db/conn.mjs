@@ -10,7 +10,7 @@ if (process.env.SKIP_DB_CONNECTION === 'true' || process.env.NODE_ENV === 'test'
     insertOne: async (doc) => ({ insertedId: 'mock-id', acknowledged: true }),
     findOneAndUpdate: async () => ({ value: null }),
     findOneAndDelete: async () => ({})
-  };
+  }
 
   db = {
     collection: () => mockCollection
