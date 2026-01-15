@@ -8,7 +8,7 @@ class BookRepository {
    */
   async getAll(limit = 50) {
     const sql = neon(`${process.env.DATABASE_URL}`)
-    return await sql.query(`SELECT * FROM books`)
+    return await sql.query(`SELECT * FROM books;`)
   }
 
   /**
@@ -23,13 +23,13 @@ class BookRepository {
 
   /**
    * Create a new book
-   * @param {Object} bookData - Book data object
+   * @param {Object} b - Book data object
    * @returns {Promise<Object>} Result with insertedId and acknowledged status
    */
-  async create(bookData) {
+  async create(b) {
     const sql = neon(`${process.env.DATABASE_URL}`)
     return await sql.query(`INSERT INTO books (title, author, status, rating, image) VALUES
-                          ('${bookData.title}', '${bookData.author}', ${bookData.status}, ${bookData.rating}, '${bookData.image}');`)
+                          ('${b.title}', '${b.author}', ${b.status}, ${b.rating}, '${b.image}');`)
   }
 
   /**
@@ -39,13 +39,9 @@ class BookRepository {
    * @returns {Promise<Object|null>} Updated book document or null if not found
    */
   async update(id, updates) {
-    if (!ObjectId.isValid(id)) {
-      throw new Error("Invalid book ID format")
-    }
-
-    const collection = db.collection("books")
+    const sql = neon(`${process.env.DATABASE_URL}`)
     const allowedFields = ['title', 'author', 'status', 'rating', 'image']
-    const sanitizedUpdates = {}
+    const sanitizedUpdates = ''
 
     allowedFields.forEach(field => {
       const value = updates[field]
@@ -55,20 +51,15 @@ class BookRepository {
       if (typeof value === 'string') {
         const trimmed = value.trim()
         if (trimmed === '') return
-        sanitizedUpdates[field] = trimmed
+        
+        sanitizedUpdates += field + ' = ' + value
       }
       else if ((field === 'rating' || field === 'status') && !isNaN(value)) {
-        sanitizedUpdates[field] = value
+        sanitizedUpdates += field + ' = ' + value + ' '
       }
     })
 
-    const result = await collection.findOneAndUpdate(
-      { _id: new ObjectId(id) },
-      { $set: sanitizedUpdates },
-      { returnDocument: 'after' }
-    )
-    
-    return result
+    return await sql.query(`UPDATE books SET (${sanitizedUpdates}) WHERE id = ${id}`)
   }
 
   /**
