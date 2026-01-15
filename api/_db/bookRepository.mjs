@@ -1,5 +1,4 @@
-import { ObjectId } from "mongodb"
-import db from "./conn.mjs"
+import { neon } from '@neondatabase/serverless'
 
 class BookRepository {
   /**
@@ -8,8 +7,12 @@ class BookRepository {
    * @returns {Promise<Array>} Array of book documents
    */
   async getAll(limit = 50) {
-    const collection = db.collection("books")
-    return await collection.find({}).limit(limit).toArray()
+    const sql = neon(`${process.env.DATABASE_URL}`)
+    return await sql('SELECT * FROM books')
+
+
+    //const collection = db.collection("books")
+    //return await collection.find({}).limit(limit).toArray()
   }
 
   /**
