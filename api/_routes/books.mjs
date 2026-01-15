@@ -23,12 +23,9 @@ function createRouter(repository = bookRepository) {
       if (!typeof(req.params.id) == 'number') {
         return res.status(400).json({ message: "invalid id" })
       }
-      console.log(!typeof(req.params.id))
-      console.log("before query id: ", req.params.id)
+      
       const result = await repository.getById(req.params.id)
-      console.log("after query id: ", req.params.id)
-      console.log("result: ", result)
-
+      
       if(!result){
         return res.status(404).json({ message: "book not found" })
       }
