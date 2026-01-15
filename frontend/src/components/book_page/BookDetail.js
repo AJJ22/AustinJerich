@@ -24,7 +24,7 @@ export default function BookDetail() {
   useEffect(() => {
     let mounted = true
     getBook(id)
-      .then(data => { if (mounted) setBook(data) })
+      .then(data => { if (mounted) setBook(data[0]) })
       .catch(err => console.error(err))
       .finally(() => { if (mounted) setLoading(false) })
     return () => { mounted = false }
