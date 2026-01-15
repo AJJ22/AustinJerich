@@ -8,24 +8,17 @@ class BookRepository {
    */
   async getAll(limit = 50) {
     const sql = neon(`${process.env.DATABASE_URL}`)
-    return await sql.query('SELECT * FROM books')
-
-
-    //const collection = db.collection("books")
-    //return await collection.find({}).limit(limit).toArray()
+    return await sql.query(`SELECT * FROM books`)
   }
 
   /**
    * Fetch a single book by ID
    * @param {string} id - MongoDB ObjectId as string
-   * @returns {Promise<Object|null>} Book document or null if not found
+   * @returns {Promise<Object|null>} NeonQueryPromise or null if not found
    */
   async getById(id) {
-    if (!ObjectId.isValid(id)) {
-      throw new Error("Invalid book ID format")
-    }
-    const collection = db.collection("books")
-    return await collection.findOne({ _id: new ObjectId(id) })
+    const sql = neon(`${process.env.DATABASE_URL}`)
+    return await sql.query(`SELECT * FROM books WHERE id = ${id};`)
   }
 
   /**
