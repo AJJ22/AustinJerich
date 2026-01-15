@@ -8,7 +8,7 @@ class BookRepository {
    */
   async getAll(limit = 50) {
     const sql = neon(`${process.env.DATABASE_URL}`)
-    return await sql('SELECT * FROM books')
+    return await sql('SELECT ${*} FROM books')
 
 
     //const collection = db.collection("books")
