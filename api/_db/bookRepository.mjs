@@ -36,7 +36,7 @@ class BookRepository {
    * Update an existing book
    * @param {string} id - MongoDB ObjectId as string
    * @param {Object} updates - Fields to update (title, author, status, rating, image)
-   * @returns {Promise<Object|null>} Updated book document or null if not found
+   * @returns {Promise<Object|null>} NeonQueryPromise or null if not found
    */
   async update(id, updates) {
     const sql = neon(`${process.env.DATABASE_URL}`)
