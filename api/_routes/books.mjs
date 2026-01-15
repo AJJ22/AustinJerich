@@ -25,6 +25,8 @@ function createRouter(repository = bookRepository) {
       }
 
       const result = await repository.getById(req.params.id)
+      console.log("id: ", req.params.id)
+      console.log("result: ", result)
 
       if(!result){
         return res.status(404).json({ message: "book not found" })
