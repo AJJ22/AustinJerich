@@ -27,13 +27,9 @@ class BookRepository {
    * @returns {Promise<Object>} Result with insertedId and acknowledged status
    */
   async create(bookData) {
-    const collection = db.collection("books")
-    
-    if (Array.isArray(bookData)) {
-      throw new Error("Multiple books not allowed")
-    }
-    
-    return await collection.insertOne(bookData)
+    const sql = neon(`${process.env.DATABASE_URL}`)
+    return await sql.query(`INSERT INTO books (title, author, status, rating, image) VALUES
+                          ('${bookData.title}', '${bookData.author}', ${bookData.status}, ${bookData.rating}, '${bookData.image}');`)
   }
 
   /**
