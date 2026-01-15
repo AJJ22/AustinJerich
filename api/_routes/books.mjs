@@ -23,9 +23,9 @@ function createRouter(repository = bookRepository) {
       if (!ObjectId.isValid(req.params.id)) {
         return res.status(400).json({ message: "invalid id" })
       }
-
+      console.log("before query id: ", req.params.id)
       const result = await repository.getById(req.params.id)
-      console.log("id: ", req.params.id)
+      console.log("after query id: ", req.params.id)
       console.log("result: ", result)
 
       if(!result){

@@ -17,7 +17,10 @@ class BookRepository {
    * @returns {Promise<Object|null>} NeonQueryPromise or null if not found
    */
   async getById(id) {
+    console.log("creating neon instance")
     const sql = neon(`${process.env.DATABASE_URL}`)
+    console.log("neon instance: ", sql)
+    console.log("id: ",id)
     return await sql.query(`SELECT * FROM books WHERE id = ${id};`)
   }
 
