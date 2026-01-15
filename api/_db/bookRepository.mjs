@@ -41,7 +41,7 @@ class BookRepository {
   async update(id, updates) {
     const sql = neon(`${process.env.DATABASE_URL}`)
     const allowedFields = ['title', 'author', 'status', 'rating', 'image']
-    let sanitizedUpdates = ''
+    let sanitizedUpdates = ``
 
     allowedFields.forEach(field => {
       const value = updates[field]
@@ -52,14 +52,14 @@ class BookRepository {
         const trimmed = value.trim()
         if (trimmed === '') return
 
-        sanitizedUpdates += field + ' = ' + value
+        sanitizedUpdates += `${field} = '${trimmed}', `
       }
       else if ((field === 'rating' || field === 'status') && !isNaN(value)) {
-        sanitizedUpdates += field + ' = ' + value + ' '
+        sanitizedUpdates += `${field} = ${value}, `
       }
     })
 
-    return await sql.query(`UPDATE books SET (${sanitizedUpdates}) WHERE id = ${id}`)
+    return await sql.query(`UPDATE books SET (${sanitizedUpdates}) WHERE id = ${id};`)
   }
 
   /**
