@@ -20,9 +20,10 @@ function createRouter(repository = bookRepository) {
   //get a book by id
   router.get('/:id', async (req, res) => {
     try{
-      if (!ObjectId.isValid(req.params.id)) {
+      if (!typeof(req.params.id) == 'number') {
         return res.status(400).json({ message: "invalid id" })
       }
+      console.log(!typeof(req.params.id))
       console.log("before query id: ", req.params.id)
       const result = await repository.getById(req.params.id)
       console.log("after query id: ", req.params.id)
