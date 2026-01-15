@@ -22,20 +22,23 @@ export default function BookList({ onRefresh }) {
 
   return (
     <div className='book-container-tailwind'>
-      {books.map(b => (
-        <div className='book-card-tailwind' key={b._id || b.id}>
-          <img
-            src={b.image}
-            alt='book cover'
-            onClick={() => {
-              navigate(`/books/${b._id || b.id}`)
-              Dispatch(clearErrors())
-            }}
-            className='max-w-[200px] mx-auto cursor-pointer'
-          />
-          <button className='btn-primary' onClick={async () => { await deleteBook(b._id || b.id); setBooks(bs => bs.filter(x => (x._id || x.id) !== (b._id || b.id))) }}>Delete</button>
-        </div>
-      ))}
+      {books
+        .sort((a, b) => a.id - b.id)
+        .map(b => (
+          <div className='book-card-tailwind' key={b._id || b.id}>
+            <img
+              src={b.image}
+              alt='book cover'
+              onClick={() => {
+                navigate(`/books/${b._id || b.id}`)
+                Dispatch(clearErrors())
+              }}
+              className='max-w-[200px] mx-auto cursor-pointer'
+            />
+            <button className='btn-primary' onClick={async () => { await deleteBook(b._id || b.id); setBooks(bs => bs.filter(x => (x._id || x.id) !== (b._id || b.id))) }}>Delete</button>
+          </div>
+        ))
+      }
     </div>
   )
 }

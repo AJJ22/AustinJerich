@@ -29,7 +29,7 @@ export default function UpdateBook({ onSaved, changeShowUpdateForm }) {
         let updatedBook = await updateBook(id, { title, author, status, rating, image })
         if (!updatedBook) updatedBook = await getBook(id)
 
-        if(onSaved) onSaved(updatedBook)
+        if(onSaved) onSaved(updatedBook[0])
     }
     catch (err) {
       console.error(err)

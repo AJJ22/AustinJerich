@@ -41,25 +41,26 @@ class BookRepository {
   async update(id, updates) {
     const sql = neon(`${process.env.DATABASE_URL}`)
     const allowedFields = ['title', 'author', 'status', 'rating', 'image']
-    let sanitizedUpdates = ``
 
-    allowedFields.forEach(field => {
-      const value = updates[field]
-      
-      if (value === undefined || value === null) return
+    const sanitizedUpdates = allowedFields
+  .map(field => {
+    const value = updates[field]
+    
+    if (value === undefined || value === null) return null
 
-      if (typeof value === 'string') {
-        const trimmed = value.trim()
-        if (trimmed === '') return
+    if (typeof value === 'string') {
+      const trimmed = value.trim()
+      if (trimmed === '') return null
+      return `${field} = '${trimmed}'`
+    }
+    else if ((field === 'rating' || field === 'status') && !isNaN(value)) {
+      return `${field} = ${value}`
+    }
+    
+    return null
+  }).filter(Boolean).join(', ')
 
-        sanitizedUpdates += `${field} = '${trimmed}', `
-      }
-      else if ((field === 'rating' || field === 'status') && !isNaN(value)) {
-        sanitizedUpdates += `${field} = ${value}, `
-      }
-    })
-
-    return await sql.query(`UPDATE books SET (${sanitizedUpdates}) WHERE id = ${id};`)
+    return await sql.query(`UPDATE books SET ${sanitizedUpdates} WHERE id = ${id};`)
   }
 
   /**

@@ -14,7 +14,7 @@ app.use((req, res, next) => {
     next()
   }
   catch(e){
-    console.error('Error in handler: ',e)
+    console.error('Error in handler: ', e)
     res.status(500).json({ error: e.message })
   }
 })
@@ -24,7 +24,8 @@ app.use(cors({
   origin: process.env.CORS_ORIGIN || '*' // set CORS_ORIGIN in .env for production
 }))
 
-app.use("/api/books", createRouter)
+const API_PATH = process.env.VERCEL ? '/api/books' : '/books'
+app.use(API_PATH, createRouter)
 
 // Global error handling
 app.use((err, _req, res, next) => {
