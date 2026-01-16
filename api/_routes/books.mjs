@@ -1,6 +1,5 @@
 import express from "express"
 import bookRepository from "../_db/bookRepository.mjs"
-import { ObjectId } from "mongodb"
 
 // TODO: fix possible sql injection
 
@@ -79,7 +78,7 @@ function createRouter(repository = bookRepository) {
   //delete an existing book
   router.delete("/:id", async (req, res) => {
     try{
-      if (!ObjectId.isValid(req.params.id)) {
+      if (!typeof(req.params.id) == 'number') {
         return res.status(400).json({ message: "invalid id" })
       }
       await repository.delete(req.params.id)

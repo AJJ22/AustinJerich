@@ -13,7 +13,7 @@ class BookRepository {
 
   /**
    * Fetch a single book by ID
-   * @param {string} id - MongoDB ObjectId as string
+   * @param {string} id - integer
    * @returns {Promise<Object|null>} NeonQueryPromise or null if not found
    */
   async getById(id) {
@@ -34,7 +34,7 @@ class BookRepository {
 
   /**
    * Update an existing book
-   * @param {string} id - MongoDB ObjectId as string
+   * @param {string} id - integer
    * @param {Object} updates - Fields to update (title, author, status, rating, image)
    * @returns {Promise<Object|null>} NeonQueryPromise or null if not found
    */
@@ -65,16 +65,12 @@ class BookRepository {
 
   /**
    * Delete a book by ID
-   * @param {string} id - MongoDB ObjectId as string
+   * @param {string} id - integer
    * @returns {Promise<Object>} Deletion result
    */
   async delete(id) {
-    if (!ObjectId.isValid(id)) {
-      throw new Error("Invalid book ID format")
-    }
-
-    const collection = db.collection("books")
-    return await collection.findOneAndDelete({ _id: new ObjectId(id) })
+    const sql = neon(`${process.env.DATABASE_URL}`)
+    return await sql.query(`DELETE FROM books WHERE id = ${id}`)
   }
 }
 
