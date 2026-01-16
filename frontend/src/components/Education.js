@@ -9,7 +9,7 @@ export default function education(){
                 <div className='m-3'>
                     <div className='font-extrabold my-2'>BS - Computer Science</div>
                     <div className='m-2'>Buena Vista University - Storm Lake, Iowa</div>
-                    <div className='m-2'>Graduated, May 2019 - GPA 3.12</div>
+                    <div className='m-2'>Graduated, May 2019</div>
                 </div>
                 <div className='m-3'>
                     <div className='font-extrabold my-2'>High School Diploma</div>
