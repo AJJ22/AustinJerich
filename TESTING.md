@@ -25,7 +25,7 @@ Run the backend test suite from the `book-API/` directory:
 npm test
 ```
 
-This will run all files matching `test/**/*.mjs` using Node's built-in test runner. Tests automatically skip the server startup and use a mocked MongoDB connection.
+This will run all files matching `test/**/*.mjs` using Node's built-in test runner. Tests automatically skip the server startup and use a mocked Neon connection.
 
 **Test files location:** `test/`
 
@@ -64,5 +64,5 @@ test("GET /books returns 200", async () => {
 
 - **Frontend:** Uses Jest (bundled with `react-scripts`) and React Testing Library
 - **Backend:** Uses Node's built-in `test` module + `supertest` for HTTP testing
-- **DB isolation:** Backend tests use a mock in-memory DB to avoid connecting to MongoDB
+- **DB isolation:** Backend tests use a mock in-memory DB to avoid connecting to Neon
 - Set `NODE_ENV=test` when running backend tests to automatically use mock DB
