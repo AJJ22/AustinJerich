@@ -1,12 +1,12 @@
 import express from "express"
-import bookRepository from "../_db/bookRepository.mjs"
+import movieRepository from "../_db/movieRepository.mjs"
 
 // TODO: fix possible sql injection
 
-function createRouter(repository = bookRepository) {
+function createRouter(repository = movieRepository) {
   const router = express.Router()
 
-  //get all books
+  //get all movies
   router.get('/', async (req, res) => {
     try{
       const results = await repository.getAll(50)
@@ -18,7 +18,7 @@ function createRouter(repository = bookRepository) {
     }
   })
 
-  //get a book by id
+  //get a movie by id
   router.get('/:id', async (req, res) => {
     try{
       if (!typeof(req.params.id) == 'number') {
@@ -28,7 +28,7 @@ function createRouter(repository = bookRepository) {
       const result = await repository.getById(req.params.id)
       
       if(!result){
-        return res.status(404).json({ message: "book not found" })
+        return res.status(404).json({ message: "movie not found" })
       }
       return res.status(200).json(result)
     }
@@ -38,7 +38,7 @@ function createRouter(repository = bookRepository) {
     }
   })
 
-  //add a new book
+  //add a new movie
   router.post('/', async (req, res) => {
     try{
       if(Array.isArray(req.body)){
@@ -49,12 +49,12 @@ function createRouter(repository = bookRepository) {
     }
     catch(e){
       console.log(e)
-      const statusCode = e.message === "Multiple books not allowed" ? 400 : 500
+      const statusCode = e.message === "Multiple movies not allowed" ? 400 : 500
       return res.status(statusCode).json({ message: e.message || String(e) })
     }
   })
 
-  //update an existing book
+  //update an existing movie
   router.put("/:id", async (req, res) => {
     try{
       if (!typeof(req.params.id) == 'number') {
@@ -64,18 +64,18 @@ function createRouter(repository = bookRepository) {
       const result = await repository.update(req.params.id, req.body)
 
       if(!result){
-        return res.status(404).json({ message: 'book not found' })
+        return res.status(404).json({ message: 'movie not found' })
       }
       return res.status(200).json(result)
     }
     catch(e){
       console.log(e)
-      const statusCode = e.message === "Invalid book ID format" ? 400 : 500
+      const statusCode = e.message === "Invalid movie ID format" ? 400 : 500
       return res.status(statusCode).json({ message: e.message || String(e) })
     }
   })
 
-  //delete an existing book
+  //delete an existing movie
   router.delete("/:id", async (req, res) => {
     try{
       if (!typeof(req.params.id) == 'number') {

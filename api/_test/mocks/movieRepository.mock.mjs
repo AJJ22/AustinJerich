@@ -1,13 +1,13 @@
 /**
- * Mock Book Repository for Unit Testing
+ * Mock Movie Repository for Unit Testing
  * Provides in-memory data storage and manipulation
  */
 
-export class MockBookRepository {
+export class MockMovieRepository {
   constructor(initialData = []) {
-    this.books = initialData.map((book, index) => ({
-      _id: book._id || String(index + 1),
-      ...book
+    this.movies = initialData.map((movie, index) => ({
+      _id: movie._id || String(index + 1),
+      ...movie
     }))
     this.callHistory = []
   }
@@ -35,30 +35,30 @@ export class MockBookRepository {
 
   async getAll(limit = 50) {
     this.recordCall('getAll', { limit })
-    return this.books.slice(0, limit)
+    return this.movies.slice(0, limit)
   }
 
   async getById(id) {
     this.recordCall('getById', { id })
-    const book = this.books.find(b => b._id === id || b._id.toString() === id)
-    return book || null
+    const movie = this.movies.find(b => b._id === id || b._id.toString() === id)
+    return movie || null
   }
 
-  async create(bookData) {
-    this.recordCall('create', { bookData })
+  async create(movieData) {
+    this.recordCall('create', { movieData })
 
-    if (Array.isArray(bookData)) {
-      throw new Error("Multiple books not allowed")
+    if (Array.isArray(movieData)) {
+      throw new Error("Multiple movies not allowed")
     }
 
-    const newBook = {
+    const newMovie = {
       _id: String(Date.now()),
-      ...bookData
+      ...movieData
     }
-    this.books.push(newBook)
+    this.movies.push(newMovie)
     
     return {
-      insertedId: newBook._id,
+      insertedId: newMovie._id,
       acknowledged: true
     }
   }
@@ -66,9 +66,9 @@ export class MockBookRepository {
   async update(id, updates) {
     this.recordCall('update', { id, updates })
 
-    const bookIndex = this.books.findIndex(b => b._id === id || b._id.toString() === id)
+    const movieIndex = this.movies.findIndex(b => b._id === id || b._id.toString() === id)
     
-    if (bookIndex === -1) {
+    if (movieIndex === -1) {
       return null
     }
 
@@ -89,41 +89,41 @@ export class MockBookRepository {
       }
     })
 
-    const updatedBook = { ...this.books[bookIndex], ...sanitizedUpdates }
-    this.books[bookIndex] = updatedBook
+    const updatedMovie = { ...this.movies[movieIndex], ...sanitizedUpdates }
+    this.movies[movieIndex] = updatedMovie
     
-    return updatedBook
+    return updatedMovie
   }
 
   async delete(id) {
     this.recordCall('delete', { id })
 
-    const bookIndex = this.books.findIndex(b => b._id === id || b._id.toString() === id)
+    const movieIndex = this.movies.findIndex(b => b._id === id || b._id.toString() === id)
     
-    if (bookIndex === -1) {
+    if (movieIndex === -1) {
       return null
     }
 
-    const deletedBook = this.books[bookIndex]
-    this.books.splice(bookIndex, 1)
+    const deletedMovie = this.movies[movieIndex]
+    this.movies.splice(movieIndex, 1)
     
-    return { value: deletedBook }
+    return { value: deletedMovie }
   }
 
   /**
    * Reset to initial state with new data
    */
   reset(newData = []) {
-    this.books = newData.map((book, index) => ({
-      _id: book._id || String(index + 1),
-      ...book
+    this.movies = newData.map((movie, index) => ({
+      _id: movie._id || String(index + 1),
+      ...movie
     }))
     this.clearCallHistory()
   }
 }
 
 // Sample test data
-export const sampleBooks = [
+export const sampleMovies = [
   {
     _id: '69263e138d6f9ef025a3be7f',
     title: 'The Understory',
@@ -150,4 +150,4 @@ export const sampleBooks = [
   }
 ]
 
-export default new MockBookRepository(sampleBooks)
+export default new MockMovieRepository(sampleMovies)

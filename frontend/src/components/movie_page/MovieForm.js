@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { addBook } from '../../client-service'
+import { addMovie } from '../../client-service'
 import useValidations from '../../utils/validations'
 import { useDispatch } from 'react-redux'
 import { addError, clearErrors } from '../../utils/errorState'
@@ -7,7 +7,7 @@ import Dropdown from '../Dropdown'
 import { StarRating } from 'react-flexible-star-rating' 
 
 
-export default function BookForm({ onAdded }) {
+export default function MovieForm({ onAdded }) {
   const [title, setTitle] = useState('')
   const [author, setAuthor] = useState('')
   const [status, setStatus] = useState('')
@@ -23,7 +23,7 @@ export default function BookForm({ onAdded }) {
     if(!await validateAdd(title, author, status, rating, image)) return
     
     try {
-      await addBook({ title, author, status, rating, image })
+      await addMovie({ title, author, status, rating, image })
       setTitle('')
       setAuthor('')
       setStatus('')
@@ -34,7 +34,7 @@ export default function BookForm({ onAdded }) {
     }
     catch (err) {
       console.error(err)
-      Dispatch(addError('Failed to add book'))
+      Dispatch(addError('Failed to add movie'))
     }
   }
 

@@ -10,16 +10,16 @@ npm test
 
 This will run all tests matching `**/*.test.js` or `**/*.test.jsx` patterns using Jest. Tests are configured to run once and exit (no watch mode by default).
 
-**Test files location:** `src/components/__tests__/`, `src/components/book_page/__tests__/`, etc.
+**Test files location:** `src/components/__tests__/`, `src/components/movie_page/__tests__/`, etc.
 
 ### Example test files:
 
 - `src/components/__tests__/Dropdown.test.js` – tests the Dropdown component
-- `src/components/book_page/__tests__/BookForm.test.js` – tests the BookForm component
+- `src/components/movie_page/__tests__/MovieForm.test.js` – tests the MovieForm component
 
 ## Backend Tests (Node.js)
 
-Run the backend test suite from the `book-API/` directory:
+Run the backend test suite from the `movie-API/` directory:
 
 ```bash
 npm test
@@ -31,7 +31,7 @@ This will run all files matching `test/**/*.mjs` using Node's built-in test runn
 
 ### Example test files:
 
-- `test/books.test.mjs` – tests the `/books` endpoint
+- `test/movies.test.mjs` – tests the `/movies` endpoint
 
 ## Writing New Tests
 
@@ -54,8 +54,8 @@ import request from "supertest";
 import app from "../index.mjs";
 import assert from "node:assert";
 
-test("GET /books returns 200", async () => {
-  const res = await request(app).get("/books");
+test("GET /movies returns 200", async () => {
+  const res = await request(app).get("/movies");
   assert.equal(res.status, 200);
 });
 ```

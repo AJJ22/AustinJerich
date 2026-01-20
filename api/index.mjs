@@ -1,7 +1,7 @@
 import express from "express"
 import cors from "cors"
 import "./_loadEnvironment.mjs"
-import createRouter from "./_routes/books.mjs"
+import createRouter from "./_routes/movies.mjs"
 
 const app = express()
 
@@ -24,7 +24,7 @@ app.use(cors({
   origin: process.env.CORS_ORIGIN || '*' // set CORS_ORIGIN in .env for production
 }))
 
-const API_PATH = process.env.VERCEL ? '/api/books' : '/books'
+const API_PATH = process.env.VERCEL ? '/api/movies' : '/movies'
 app.use(API_PATH, createRouter)
 
 // Global error handling

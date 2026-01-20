@@ -35,24 +35,24 @@
   }
 
 
-  .book-card-tailwind {
+  .movie-card-tailwind {
     @apply flex flex-col items-center;
   }
-  .book-container-tailwind {
+  .movie-container-tailwind {
     @apply grid grid-cols-4 gap-4;
   }
 
 
-  .book-details-0 {
+  .movie-details-0 {
     @apply p-5 flex flex-col;
   }
-  .book-details-1 {
+  .movie-details-1 {
     @apply flex items-center;
   }
-  .book-details-2 {
+  .movie-details-2 {
     @apply text-lg font-[500] py-3;
   }
-  .book-details-3 {
+  .movie-details-3 {
     @apply px-3;
   }
 }

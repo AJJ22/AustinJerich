@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { updateBook, getBook } from '../../client-service'
+import { updateMovie, getMovie } from '../../client-service'
 import useValidations from '../../utils/validations'
 import { useDispatch } from 'react-redux'
 import { addError, clearErrors } from '../../utils/errorState'
@@ -7,7 +7,7 @@ import { useParams } from 'react-router-dom'
 import Dropdown from '../Dropdown'
 import { StarRating } from 'react-flexible-star-rating'
 
-export default function UpdateBook({ onSaved, changeShowUpdateForm }) {
+export default function UpdateMovie({ onSaved, changeShowUpdateForm }) {
   const { validateUpdate } = useValidations()
   const [title, setTitle] = useState('')
   const [author, setAuthor] = useState('')
@@ -26,14 +26,14 @@ export default function UpdateBook({ onSaved, changeShowUpdateForm }) {
     }
     
     try {
-        let updatedBook = await updateBook(id, { title, author, status, rating, image })
-        if (!updatedBook[0]) updatedBook = await getBook(id)
+        let updatedMovie = await updateMovie(id, { title, author, status, rating, image })
+        if (!updatedMovie[0]) updatedMovie = await getMovie(id)
 
-        if(onSaved) onSaved(updatedBook[0])
+        if(onSaved) onSaved(updatedMovie[0])
     }
     catch (err) {
       console.error(err)
-      Dispatch(addError('Failed to update book'))
+      Dispatch(addError('Failed to update movie'))
     }
   }
 

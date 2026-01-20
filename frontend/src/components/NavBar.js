@@ -13,10 +13,9 @@ export default function NavBar() {
           <Link to="/education" className={`pb-2 transition ${isActive('/education')}`}>Education</Link>
           <Link to="/contact" className={`pb-2 transition ${isActive('/contact')}`}>Contact</Link>
           <Link to="/TextGame2019" className={`pb-2 transition whitespace-nowrap ${isActive('/TextGame2019')}`}>Text Game 2019</Link>
-          <Link to="/books" className={`pb-2 transition ${isActive('/books')}`}>Books</Link>
+          <Link to="/movies" className={`pb-2 transition ${isActive('/movies')}`}>Movie Tracking API</Link>
         </div>
       </div>
     </nav>
   )
 }
-

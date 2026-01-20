@@ -1,20 +1,20 @@
 import { useState } from 'react'
 import NavBar from '../NavBar.js'
-import BookForm from './BookForm'
-import BookList from './BookList'
+import MovieForm from './MovieForm.js'
+import MovieList from './MovieList.js'
 import ErrorDisplay from './ErrorDisplay.js'
 
-export default function BooksPage() {
+export default function MoviesPage() {
   const [refreshKey, setRefreshKey] = useState(0)
   return (
     <div>
         <NavBar />
 
         <div className="page-tailwind">
-            <h1 className='text-3xl font-bold'>Books</h1>
+            <h1 className='text-3xl font-bold'>Movies</h1>
             <ErrorDisplay />
-            <BookForm onAdded={() => setRefreshKey(k => k + 1)} />
-            <BookList onRefresh={refreshKey} />
+            <MovieForm onAdded={() => setRefreshKey(k => k + 1)} />
+            <MovieList onRefresh={refreshKey} />
         </div>
     </div>
   )

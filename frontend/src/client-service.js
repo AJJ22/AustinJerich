@@ -10,16 +10,16 @@ async function request(path, opts) {
   return res.json()
 }
 
-export const getBooks = () => request('/books')
-export const getBook = id => request(`/books/${id}`)
-export const addBook = book => request('/books', {
+export const getMovies = () => request('/movies')
+export const getMovie = id => request(`/movies/${id}`)
+export const addMovie = movie => request('/movies', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify(book)
+  body: JSON.stringify(movie)
 })
-export const updateBook = (id, book) => request(`/books/${id}`, {
+export const updateMovie = (id, movie) => request(`/movies/${id}`, {
   method: 'PUT',
   headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify(book)
+  body: JSON.stringify(movie)
 })
-export const deleteBook = id => request(`/books/${id}`, { method: 'DELETE' })
+export const deleteMovie = id => request(`/movies/${id}`, { method: 'DELETE' })

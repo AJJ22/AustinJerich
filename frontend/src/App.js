@@ -4,8 +4,8 @@ import Experience from './components/Experience'
 import Home from './components/Home'
 import Contact from './components/Contact'
 import TextGame2019 from './components/TextGame2019'
-import Books from './components/book_page/Books'
-import BookDetail from './components/book_page/BookDetail'
+import Movie from './components/movie_page/Movie'
+import MovieDetail from './components/movie_page/MovieDetail'
 import './App.css'
 
 function App(){
@@ -30,10 +30,10 @@ function App(){
             <Route path="/textGame2019" element={<TextGame2019 />} />
 
             {}
-            <Route path="/books" element={<Books />} />
+            <Route path="/movies" element={<Movie />} />
 
             {}
-            <Route path="/books/:id" element={<BookDetail />} />
+            <Route path="/movies/:id" element={<MovieDetail />} />
 
             {/* If any route mismatches the upper route endpoints then, redirect triggers and redirects app to home component with to="/" */}
             {/* <Redirect to="/" /> */}
