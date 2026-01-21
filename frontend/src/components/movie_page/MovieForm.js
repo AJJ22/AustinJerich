@@ -45,7 +45,7 @@ export default function MovieForm({ onAdded }) {
   return (
     <form onSubmit={submit} className='flex my-6'>
       <input value={title} className='input-field' onChange={e => setTitle(e.target.value)} placeholder="Title" required />
-      <input value={director} className='input-field' onChange={e => setDirector(e.target.value)} placeholder="director" required />
+      <input value={director} className='input-field' onChange={e => setDirector(e.target.value)} placeholder="Director" required />
       
       <Dropdown
         value={status}
