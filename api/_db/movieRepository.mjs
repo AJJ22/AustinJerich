@@ -28,19 +28,19 @@ class MovieRepository {
    */
   async create(b) {
     const sql = neon(`${process.env.DATABASE_URL}`)
-    return await sql.query(`INSERT INTO movies (title, author, status, rating, image) VALUES
-                          ('${b.title}', '${b.author}', ${b.status}, ${b.rating}, '${b.image}');`)
+    return await sql.query(`INSERT INTO movies (title, director, status, rating, image) VALUES
+                          ('${b.title}', '${b.director}', ${b.status}, ${b.rating}, '${b.image}');`)
   }
 
   /**
    * Update an existing movie
    * @param {string} id - integer
-   * @param {Object} updates - Fields to update (title, author, status, rating, image)
+   * @param {Object} updates - Fields to update (title, director, status, rating, image)
    * @returns {Promise<Object|null>} NeonQueryPromise or null if not found
    */
   async update(id, updates) {
     const sql = neon(`${process.env.DATABASE_URL}`)
-    const allowedFields = ['title', 'author', 'status', 'rating', 'image']
+    const allowedFields = ['title', 'director', 'status', 'rating', 'image']
 
     const sanitizedUpdates = allowedFields
   .map(field => {

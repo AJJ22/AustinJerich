@@ -32,7 +32,7 @@ test('GET /movies - Returns all movies', async (t) => {
     const res = await request(app).get('/movies')
 
     assert.equal(res.body[0].title, 'The Understory')
-    assert.equal(res.body[0].author, 'James W. Tolan')
+    assert.equal(res.body[0].director, 'James W. Tolan')
   })
 
   await t.test('should call repository getAll method', async () => {
@@ -92,7 +92,7 @@ test('POST /movies - Create new movie', async (t) => {
   await t.test('should create a new movie', async () => {
     const mockRepo = new MockMovieRepository([])
     const app = createTestApp(mockRepo)
-    const newMovie = { title: 'Test Movie', author: 'Test Author', status: 'read', rating: 5 }
+    const newMovie = { title: 'Test Movie', director: 'Test Director', status: 'read', rating: 5 }
 
     const res = await request(app).post('/movies').send(newMovie)
 
@@ -125,7 +125,7 @@ test('POST /movies - Create new movie', async (t) => {
   await t.test('should store data in repository', async () => {
     const mockRepo = new MockMovieRepository([])
     const app = createTestApp(mockRepo)
-    const newMovie = { title: 'New Movie', author: 'New Author' }
+    const newMovie = { title: 'New Movie', director: 'New Director' }
 
     await request(app).post('/movies').send(newMovie)
 

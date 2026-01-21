@@ -9,7 +9,7 @@ import { StarRating } from 'react-flexible-star-rating'
 
 export default function MovieForm({ onAdded }) {
   const [title, setTitle] = useState('')
-  const [author, setAuthor] = useState('')
+  const [director, setDirector] = useState('')
   const [status, setStatus] = useState('')
   const [rating, setRating] = useState(0)
   const [image, setImage] = useState('')
@@ -20,12 +20,12 @@ export default function MovieForm({ onAdded }) {
     e.preventDefault()
     Dispatch(clearErrors())
 
-    if(!await validateAdd(title, author, status, rating, image)) return
+    if(!await validateAdd(title, director, status, rating, image)) return
     
     try {
-      await addMovie({ title, author, status, rating, image })
+      await addMovie({ title, director, status, rating, image })
       setTitle('')
-      setAuthor('')
+      setDirector('')
       setStatus('')
       setRating(0)
       setImage('')
@@ -45,7 +45,7 @@ export default function MovieForm({ onAdded }) {
   return (
     <form onSubmit={submit} className='flex my-6'>
       <input value={title} className='input-field' onChange={e => setTitle(e.target.value)} placeholder="Title" required />
-      <input value={author} className='input-field' onChange={e => setAuthor(e.target.value)} placeholder="Author" required />
+      <input value={director} className='input-field' onChange={e => setDirector(e.target.value)} placeholder="director" required />
       
       <Dropdown
         value={status}

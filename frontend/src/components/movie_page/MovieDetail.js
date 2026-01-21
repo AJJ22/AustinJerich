@@ -54,8 +54,8 @@ export default function MovieDetail() {
             </div>
             <div className='movie-details-0'>
               <div className='movie-details-1'>
-                <div className='movie-details-2'>Author:</div>
-                <div className='movie-details-3'>{movie.author}</div>
+                <div className='movie-details-2'>Director:</div>
+                <div className='movie-details-3'>{movie.director}</div>
               </div>
               <div className='movie-details-1'>
                 <div className='movie-details-2'>Status:</div>

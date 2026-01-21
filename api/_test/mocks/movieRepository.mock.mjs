@@ -72,7 +72,7 @@ export class MockMovieRepository {
       return null
     }
 
-    const allowedFields = ['title', 'author', 'status', 'rating', 'image']
+    const allowedFields = ['title', 'director', 'status', 'rating', 'image']
     const sanitizedUpdates = {}
 
     allowedFields.forEach(field => {
@@ -127,7 +127,7 @@ export const sampleMovies = [
   {
     _id: '69263e138d6f9ef025a3be7f',
     title: 'The Understory',
-    author: 'James W. Tolan',
+    director: 'James W. Tolan',
     status: 'read',
     rating: 4,
     image: 'https://example.com/understory.jpg'
@@ -135,7 +135,7 @@ export const sampleMovies = [
   {
     _id: '69263e138d6f9ef025a3be80',
     title: 'Educated',
-    author: 'Tara Westover',
+    director: 'Tara Westover',
     status: 'reading',
     rating: 5,
     image: 'https://example.com/educated.jpg'
@@ -143,7 +143,7 @@ export const sampleMovies = [
   {
     _id: '69263e138d6f9ef025a3be81',
     title: 'Atomic Habits',
-    author: 'James Clear',
+    director: 'James Clear',
     status: 'want-to-read',
     rating: 0,
     image: 'https://example.com/atomic-habits.jpg'

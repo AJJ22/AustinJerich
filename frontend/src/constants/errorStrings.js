@@ -1,4 +1,4 @@
-export const NO_SPECIAL_CHARS = 'Title, Author, and Status cannot contain special characters'
+export const NO_SPECIAL_CHARS = 'Title, Director, and Status cannot contain special characters'
 export const RATING_REQUIRED = 'Rating is required'
 export const IMAGE_LINK_REQUIRED = 'Requires an image link'
 export const AT_LEAST_ONE_FIELD_REQUIRED = 'At least one field is required to be completed'

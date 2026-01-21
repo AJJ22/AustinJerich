@@ -10,7 +10,7 @@ import { StarRating } from 'react-flexible-star-rating'
 export default function UpdateMovie({ onSaved, changeShowUpdateForm }) {
   const { validateUpdate } = useValidations()
   const [title, setTitle] = useState('')
-  const [author, setAuthor] = useState('')
+  const [director, setDirector] = useState('')
   const [status, setStatus] = useState('')
   const [rating, setRating] = useState('')
   const [image, setImage] = useState('')
@@ -21,12 +21,12 @@ export default function UpdateMovie({ onSaved, changeShowUpdateForm }) {
     e.preventDefault()
     Dispatch(clearErrors())
 
-    if(!await validateUpdate(title, author, status, rating, image)){
+    if(!await validateUpdate(title, director, status, rating, image)){
       return
     }
     
     try {
-        let updatedMovie = await updateMovie(id, { title, author, status, rating, image })
+        let updatedMovie = await updateMovie(id, { title, director, status, rating, image })
         if (!updatedMovie[0]) updatedMovie = await getMovie(id)
 
         if(onSaved) onSaved(updatedMovie[0])
@@ -49,7 +49,7 @@ export default function UpdateMovie({ onSaved, changeShowUpdateForm }) {
   return (
     <form onSubmit={submit} className='flex flex-col'>
       <input value={title} className='input-field' onChange={e => setTitle(e.target.value)} placeholder="Title" />
-      <input value={author} className='input-field' onChange={e => setAuthor(e.target.value)} placeholder="Author" />
+      <input value={director} className='input-field' onChange={e => setDirector(e.target.value)} placeholder="director" />
       
       <Dropdown
         value={status}

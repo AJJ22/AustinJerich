@@ -8,7 +8,7 @@
     "start": "node index.mjs"
   },
   "keywords": [],
-  "author": "",
+  "author": "Austin Jerich",
   "license": "ISC",
   "description": "",
   "dependencies": {

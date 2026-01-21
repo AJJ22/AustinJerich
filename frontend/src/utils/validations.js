@@ -32,10 +32,10 @@ const notValidImageLink = async (link) => {
 export default function useValidations() {
     const dispatch = useDispatch()
 
-    const validateAdd = async (title, author, status, rating, image) => {
+    const validateAdd = async (title, director, status, rating, image) => {
         let inputsValid = true
 
-        if(containsSpecialCharacters(title) || containsSpecialCharacters(author) || containsSpecialCharacters(status)){
+        if(containsSpecialCharacters(title) || containsSpecialCharacters(director) || containsSpecialCharacters(status)){
             dispatch(addError(NO_SPECIAL_CHARS))
             inputsValid = false
         }
@@ -47,7 +47,7 @@ export default function useValidations() {
             dispatch(addError(IMAGE_LINK_REQUIRED))
             inputsValid = false
         }
-        if(title === '' || author === '' || status === ''){
+        if(title === '' || director === '' || status === ''){
             dispatch(addError(FIELDS_CANNOT_BE_BLANK))
             inputsValid = false
         }
@@ -55,10 +55,10 @@ export default function useValidations() {
         return inputsValid
     }
 
-    const validateUpdate = async (title, author, status, rating, image) => {
+    const validateUpdate = async (title, director, status, rating, image) => {
         let inputsValid = true
 
-        if(title === '' && author === '' && status === '' && rating === '' && image === ''){
+        if(title === '' && director === '' && status === '' && rating === '' && image === ''){
             dispatch(addError(AT_LEAST_ONE_FIELD_REQUIRED))
             return false
         }
@@ -67,7 +67,7 @@ export default function useValidations() {
             dispatch(addError(NO_SPECIAL_CHARS))
             inputsValid = false
         }
-        if(author !== undefined && author !== '' && containsSpecialCharacters(author)){
+        if(director !== undefined && director !== '' && containsSpecialCharacters(director)){
             dispatch(addError(NO_SPECIAL_CHARS))
             inputsValid = false
         }
