@@ -1,4 +1,4 @@
-# Link to the site: [AJJ22.github.io](https://AJJ22.github.io)
+# Link to the site: [austinjerich22.vercel.app](https://austinjerich22.vercel.app/)
 
 ## Development build tools
 
