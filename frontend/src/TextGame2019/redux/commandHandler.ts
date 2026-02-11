@@ -410,7 +410,7 @@ export function gameReducer(state, action) {
                 return{
                     ...state,
                     awaitingBuyInput: true,
-                    messages: [...state.messages, `What would you like to buy? (exit using 'quit' or 'q').\n` + items ]
+                    messages: [...state.messages, `What would you like to buy? (exit using 'quit' or 'q').\n` + items]
                 }
             }
             else{
@@ -434,7 +434,7 @@ export function gameReducer(state, action) {
             //reduce transforms an array into a new data structure by running the function definition for each array element
             //acc stands for 'accumulator', it is the new data structure with all the data up to this point. can be anything (array, object, dictionary, linked list, etc...)
             // {} at the bottom is the initial value for the accumulator. if i wanted to have a default item for sale, i could use { "item": 4 } as the initial value
-            const saleItems = locationMap[player.location].itemsForSale.reduce((acc, itemStr) => {
+            const saleItems = locationMap[player.location].itemsForSale.reduce((acc, itemStr: string) => {
                 const [name, price] = itemStr.split(' ')
                 acc[name] = Number(price)
                 return acc

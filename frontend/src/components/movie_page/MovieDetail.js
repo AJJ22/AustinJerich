@@ -7,6 +7,7 @@ import NavBar from '../NavBar.js'
 import { useDispatch } from 'react-redux'
 import { clearErrors } from '../../utils/errorState.js'
 import { StarRating } from 'react-flexible-star-rating'
+import { statusDescription, genreDescription } from '../../constants/DropdownItems.js'
 
 export default function MovieDetail() {
   const [showUpdateForm, setShowUpdateForm] = useState(false)
@@ -15,11 +16,6 @@ export default function MovieDetail() {
   const [movie, setMovie] = useState(null)
   const [loading, setLoading] = useState(true)
   const Dispatch = useDispatch()
-  const statusDescription = {
-    10: 'Completed',
-    20: 'Reading',
-    30: 'Not Started'
-  }
 
   useEffect(() => {
     let mounted = true
@@ -53,14 +49,22 @@ export default function MovieDetail() {
               <img src={movie.image} alt={movie.title} className='max-w-[300px]' />
             </div>
             <div className='movie-details-0'>
+
+              <div className='movie-details-1'>
+                <div className='movie-details-2'>Genre:</div>
+                <div className='movie-details-3'>{genreDescription[movie.genre]}</div>
+              </div>
+
               <div className='movie-details-1'>
                 <div className='movie-details-2'>Director:</div>
                 <div className='movie-details-3'>{movie.director}</div>
               </div>
+
               <div className='movie-details-1'>
                 <div className='movie-details-2'>Status:</div>
                 <div className='movie-details-3'>{statusDescription[movie.status]}</div>
               </div>
+
               <div className='movie-details-1'>
                 <div className='movie-details-2'>Rating:</div>
                 <div className='flex-shrink-0 mx-3'>
@@ -74,6 +78,12 @@ export default function MovieDetail() {
                   />
                 </div>
               </div>
+
+              <div className='movie-details-1'>
+                <div className='movie-details-2'>Comment:</div>
+                <textarea value={movie.comment} className='movie-details-3' rows='4' cols='30' readOnly={true} />
+              </div>
+
             </div>
           </div>
         </div>

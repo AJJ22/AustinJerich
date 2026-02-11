@@ -15,7 +15,7 @@ This will run all tests matching `**/*.test.js` or `**/*.test.jsx` patterns usin
 ### Example test files:
 
 - `src/components/__tests__/Dropdown.test.js` – tests the Dropdown component
-- `src/components/movie_page/__tests__/MovieForm.test.js` – tests the MovieForm component
+- `src/components/movie_page/__tests__/AddMovieForm.test.js` – tests the AddMovieForm component
 
 ## Backend Tests (Node.js)
 

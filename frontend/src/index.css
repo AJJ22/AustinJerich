@@ -15,7 +15,7 @@
 
 
   .input-field {
-    @apply bg-white w-[200px] px-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 max-w-[200px];
+    @apply bg-gray-200 w-[200px] px-3 py-3 my-4 focus:outline-none focus:ring-2 focus:ring-blue-500 max-w-[200px];
   }
 
   .card {
@@ -23,7 +23,10 @@
   }
 
   .header {
-    @apply text-3xl font-bold;
+    @apply text-5xl font-bold w-fit;
+  }
+  .card-title {
+    @apply text-2xl font-bold;
   }
 
   .user-command-tailwind {
@@ -31,7 +34,15 @@
   }
 
   .page-tailwind {
-    @apply py-5 px-10 flex flex-col h-[90vh];
+    @apply flex flex-col relative py-5 px-10 h-[90vh] z-10;
+  }
+
+  .overlay {
+    @apply flex flex-col fixed bg-black/30 w-screen h-screen z-20;
+  }
+
+  .pop-up-box {
+    @apply flex flex-col absolute my-6 border-2 border-blue-300 rounded p-5 w-fit bg-white z-30;
   }
 
 

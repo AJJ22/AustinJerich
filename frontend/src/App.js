@@ -11,6 +11,7 @@ import './App.css'
 function App(){
   return(
     <>
+    <div/>
     {/* This is the alias of BrowserRouter i.e. Router */}
     <Router>
         <Routes>

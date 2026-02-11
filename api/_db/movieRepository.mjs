@@ -23,13 +23,13 @@ class MovieRepository {
 
   /**
    * Create a new movie
-   * @param {Object} b - Movie data object
+   * @param {Object} m - Movie data object
    * @returns {Promise<Object>} Result with insertedId and acknowledged status
    */
-  async create(b) {
+  async create(m) {
     const sql = neon(`${process.env.DATABASE_URL}`)
-    return await sql.query(`INSERT INTO movies (title, director, status, rating, image) VALUES
-                          ('${b.title}', '${b.director}', ${b.status}, ${b.rating}, '${b.image}');`)
+    return await sql.query(`INSERT INTO movies (title, director, status, rating, image, genre, comment) VALUES
+                          ('${m.title}', '${m.director}', ${m.status}, ${m.rating}, '${m.image}', ${m.genre}, '${m.comment}');`)
   }
 
   /**
@@ -40,24 +40,24 @@ class MovieRepository {
    */
   async update(id, updates) {
     const sql = neon(`${process.env.DATABASE_URL}`)
-    const allowedFields = ['title', 'director', 'status', 'rating', 'image']
+    const allowedFields = ['title', 'director', 'status', 'rating', 'image', 'genre', 'comment']
 
     const sanitizedUpdates = allowedFields
-  .map(field => {
-    const value = updates[field]
-    
-    if (value === undefined || value === null) return null
+    .map(field => {
+      const value = updates[field]
+      
+      if (value === undefined || value === null) return null
 
-    if (typeof value === 'string') {
-      const trimmed = value.trim()
-      if (trimmed === '') return null
-      return `${field} = '${trimmed}'`
-    }
-    else if ((field === 'rating' || field === 'status') && !isNaN(value)) {
-      return `${field} = ${value}`
-    }
-    
-    return null
+      if (typeof value === 'string') {
+        const trimmed = value.trim()
+        if (trimmed === '') return null
+        return `${field} = '${trimmed}'`
+      }
+      else if ((field === 'rating' || field === 'status' || field === 'genre') && !isNaN(value)) {
+        return `${field} = ${value}`
+      }
+      
+      return null
   }).filter(Boolean).join(', ')
 
     return await sql.query(`UPDATE movies SET ${sanitizedUpdates} WHERE id = ${id};`)

@@ -1,4 +1,4 @@
-import { IMAGE_LINK_REQUIRED, RATING_REQUIRED, NO_SPECIAL_CHARS, AT_LEAST_ONE_FIELD_REQUIRED, FIELDS_CANNOT_BE_BLANK } from '../constants/errorStrings'
+import { IMAGE_LINK_REQUIRED, RATING_REQUIRED, NO_SPECIAL_CHARS, AT_LEAST_ONE_FIELD_REQUIRED, FIELDS_CANNOT_BE_BLANK, NON_NEGATIVE_MULTIPLE_OF_TEN_REQUIRED } from '../constants/errorStrings'
 import { addError } from './errorState'
 import { useDispatch } from 'react-redux'
 import axios from 'axios'
@@ -12,6 +12,17 @@ const containsSpecialCharacters = (str) => {
 const validateRating = (input) => {
     const n = Number(input)
     return Number.isNaN(n) || n < .5 || n > 5 || n % .5 !== 0
+}
+
+const isNonNegativeMultipleOfTen = (input) => {
+    const n = Number(input)
+    if(!Number.isNaN(n)){
+        return false
+    }
+    if(n < 0 || n % 10 != 0){
+        return false
+    }
+    return true
 }
 
 const notValidImageLink = async (link) => {
@@ -32,13 +43,19 @@ const notValidImageLink = async (link) => {
 export default function useValidations() {
     const dispatch = useDispatch()
 
-    const validateAdd = async (title, director, status, rating, image) => {
+    const validateAdd = async (title, director, status, rating, image, genre, comment) => {
         let inputsValid = true
 
-        if(containsSpecialCharacters(title) || containsSpecialCharacters(director) || containsSpecialCharacters(status)){
+        if(containsSpecialCharacters(title) || containsSpecialCharacters(director) || containsSpecialCharacters(comment)){
             dispatch(addError(NO_SPECIAL_CHARS))
             inputsValid = false
         }
+
+        if(isNonNegativeMultipleOfTen(status) || isNonNegativeMultipleOfTen(genre)){
+            dispatch(addError(NON_NEGATIVE_MULTIPLE_OF_TEN_REQUIRED))
+            inputsValid = false
+        }
+
         if(validateRating(rating)){
             dispatch(addError(RATING_REQUIRED))
             inputsValid = false
@@ -55,10 +72,10 @@ export default function useValidations() {
         return inputsValid
     }
 
-    const validateUpdate = async (title, director, status, rating, image) => {
+    const validateUpdate = async (title, director, status, rating, image, genre, comment) => {
         let inputsValid = true
 
-        if(title === '' && director === '' && status === '' && rating === '' && image === ''){
+        if(title === '' && director === '' && status === '' && rating === '' && image === '' && genre === '' && comment === ''){
             dispatch(addError(AT_LEAST_ONE_FIELD_REQUIRED))
             return false
         }
@@ -71,8 +88,12 @@ export default function useValidations() {
             dispatch(addError(NO_SPECIAL_CHARS))
             inputsValid = false
         }
-        if(status !== undefined && status !== '' && containsSpecialCharacters(status)){
-            dispatch(addError(NO_SPECIAL_CHARS))
+        if(status !== undefined && status !== '' && isNonNegativeMultipleOfTen(status)){
+            dispatch(addError(NON_NEGATIVE_MULTIPLE_OF_TEN_REQUIRED))
+            inputsValid = false
+        }
+        if(genre !== undefined && genre !== '' && isNonNegativeMultipleOfTen(genre)){
+            dispatch(addError(NON_NEGATIVE_MULTIPLE_OF_TEN_REQUIRED))
             inputsValid = false
         }
         if(rating !== null && rating !== '' && validateRating(rating)){
@@ -81,6 +102,10 @@ export default function useValidations() {
         }
         if(image !== undefined && image !== '' && await notValidImageLink(image)){
             dispatch(addError(IMAGE_LINK_REQUIRED))
+            inputsValid = false
+        }
+        if(comment !== undefined && comment !== '' && containsSpecialCharacters(comment)){
+            dispatch(addError(NO_SPECIAL_CHARS))
             inputsValid = false
         }
 
