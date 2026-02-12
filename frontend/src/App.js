@@ -6,12 +6,13 @@ import Contact from './components/Contact'
 import TextGame2019 from './components/TextGame2019'
 import Movie from './components/movie_page/Movie'
 import MovieDetail from './components/movie_page/MovieDetail'
+import { Analytics } from "@vercel/analytics/next"
 import './App.css'
+
 
 function App(){
   return(
     <>
-    <div/>
     {/* This is the alias of BrowserRouter i.e. Router */}
     <Router>
         <Routes>
@@ -41,7 +42,9 @@ function App(){
             <Route path="*" element={<Navigate to="/" />} />
         </Routes>
     </Router>
-</>
+
+    <Analytics />
+    </>
   )
 }
 
