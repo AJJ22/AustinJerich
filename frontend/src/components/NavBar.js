@@ -10,8 +10,6 @@ export default function NavBar() {
         <div className="flex gap-8">
           <Link to="/" className={`pb-2 transition ${isActive('/')}`}>Home</Link>
           <Link to="/experience" className={`pb-2 transition ${isActive('/experience')}`}>Experience</Link>
-          <Link to="/education" className={`pb-2 transition ${isActive('/education')}`}>Education</Link>
-          <Link to="/contact" className={`pb-2 transition ${isActive('/contact')}`}>Contact</Link>
           <Link to="/TextGame2019" className={`pb-2 transition whitespace-nowrap ${isActive('/TextGame2019')}`}>Text Game 2019</Link>
           <Link to="/movies" className={`pb-2 transition ${isActive('/movies')}`}>Movie Tracking API</Link>
         </div>

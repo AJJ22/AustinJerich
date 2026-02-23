@@ -1,8 +1,6 @@
 import { HashRouter as Router, Routes, Route, Navigate } from "react-router-dom"
-import Education from './components/Education'
 import Experience from './components/Experience'
 import Home from './components/Home'
-import Contact from './components/Contact'
 import TextGame2019 from './components/TextGame2019'
 import Movie from './components/movie_page/Movie'
 import MovieDetail from './components/movie_page/MovieDetail'
@@ -21,12 +19,6 @@ function App(){
 
             {}
             <Route path="/experience" element={<Experience />} />
-
-            {}
-            <Route path="/education" element={<Education />} />
-
-            {}
-            <Route path="/contact" element={<Contact />} />
 
             {}
             <Route path="/textGame2019" element={<TextGame2019 />} />
