@@ -24,18 +24,18 @@ export default function MovieList({ onRefresh }) {
     <div className='movie-container-tailwind'>
       {movies
         .sort((a, b) => a.id - b.id)
-        .map(b => (
-          <div className='movie-card-tailwind' key={b._id || b.id}>
+        .map(movie => (
+          <div className='movie-card-tailwind' key={movie._id || movie.id}>
             <img
-              src={b.image}
-              alt='movie cover'
+              src={movie.image}
+              alt='Movie cover'
               onClick={() => {
-                navigate(`/movies/${b._id || b.id}`)
+                navigate(`/movies/${movie._id || movie.id}`)
                 Dispatch(clearErrors())
               }}
               className='max-w-[200px] mx-auto cursor-pointer'
             />
-            <button className='btn-primary' onClick={async () => { await deleteMovie(b._id || b.id); setMovies(bs => bs.filter(x => (x._id || x.id) !== (b._id || b.id))) }}>Delete</button>
+            <button className='btn-primary' onClick={async () => { await deleteMovie(movie._id || movie.id); setMovies(ms => ms.filter(x => (x._id || x.id) !== (movie._id || movie.id))) }}>Delete</button>
           </div>
         ))
       }
