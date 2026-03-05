@@ -1,4 +1,5 @@
-import { IMAGE_LINK_REQUIRED, RATING_REQUIRED, NO_SPECIAL_CHARS, AT_LEAST_ONE_FIELD_REQUIRED, FIELDS_CANNOT_BE_BLANK, NON_NEGATIVE_MULTIPLE_OF_TEN_REQUIRED } from '../constants/errorStrings'
+import { IMAGE_LINK_REQUIRED, RATING_REQUIRED, NO_SPECIAL_CHARS, AT_LEAST_ONE_FIELD_REQUIRED, FIELDS_CANNOT_BE_BLANK, INVALID_DROPDOWN_SELECTION } from '../constants/errorStrings'
+import { genreDescription, statusDescription } from '../constants/DropdownItems'
 import { addError } from './errorState'
 import { useDispatch } from 'react-redux'
 import axios from 'axios'
@@ -14,15 +15,11 @@ const validateRating = (input) => {
     return Number.isNaN(n) || n < .5 || n > 5 || n % .5 !== 0
 }
 
-const isNonNegativeMultipleOfTen = (input) => {
-    const n = Number(input)
-    if(!Number.isNaN(n)){
-        return false
+const isNotValidDropdownItem = (input, list) => {
+    if(!list.includes(input)){
+        return true
     }
-    if(n < 0 || n % 10 != 0){
-        return false
-    }
-    return true
+    return false
 }
 
 const notValidImageLink = async (link) => {
@@ -51,8 +48,8 @@ export default function useValidations() {
             inputsValid = false
         }
 
-        if(isNonNegativeMultipleOfTen(status) || isNonNegativeMultipleOfTen(genre)){
-            dispatch(addError(NON_NEGATIVE_MULTIPLE_OF_TEN_REQUIRED))
+        if(isNotValidDropdownItem(status, statusDescription) || isNotValidDropdownItem(genre, genreDescription)){
+            dispatch(addError(INVALID_DROPDOWN_SELECTION))
             inputsValid = false
         }
 
@@ -88,12 +85,12 @@ export default function useValidations() {
             dispatch(addError(NO_SPECIAL_CHARS))
             inputsValid = false
         }
-        if(status !== undefined && status !== '' && isNonNegativeMultipleOfTen(status)){
-            dispatch(addError(NON_NEGATIVE_MULTIPLE_OF_TEN_REQUIRED))
+        if(status !== undefined && status !== '' && isNotValidDropdownItem(status, statusDescription)){
+            dispatch(addError(INVALID_DROPDOWN_SELECTION))
             inputsValid = false
         }
-        if(genre !== undefined && genre !== '' && isNonNegativeMultipleOfTen(genre)){
-            dispatch(addError(NON_NEGATIVE_MULTIPLE_OF_TEN_REQUIRED))
+        if(genre !== undefined && genre !== '' && isNotValidDropdownItem(genre, genreDescription)){
+            dispatch(addError(INVALID_DROPDOWN_SELECTION))
             inputsValid = false
         }
         if(rating !== null && rating !== '' && validateRating(rating)){

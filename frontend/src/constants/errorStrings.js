@@ -3,7 +3,7 @@ export const RATING_REQUIRED = 'Rating is required'
 export const IMAGE_LINK_REQUIRED = 'Requires an image link'
 export const AT_LEAST_ONE_FIELD_REQUIRED = 'At least one field is required to be completed'
 export const FIELDS_CANNOT_BE_BLANK = 'All fields are required'
-export const NON_NEGATIVE_MULTIPLE_OF_TEN_REQUIRED = 'Please choose an item from the dropdown menu'
+export const INVALID_DROPDOWN_SELECTION = 'Invalid dropdown selection'
 
 //there were compile errors when this file is marked as typescript
 //switched back to js for easy fix
