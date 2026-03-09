@@ -50,7 +50,7 @@
 
 
   .movie-card-tailwind {
-    @apply flex flex-col items-center;
+    @apply flex flex-col items-center mt-3 mb-3;
   }
   .movie-container-tailwind {
     @apply grid grid-cols-4 gap-4;
