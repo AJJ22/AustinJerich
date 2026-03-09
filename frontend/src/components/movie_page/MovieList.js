@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { getMovies, deleteMovie } from '../../client-service'
+import { getMovies } from '../../client-service'
 import { useNavigate } from 'react-router-dom'
 import { clearErrors } from '../../utils/errorState'
 import { useDispatch } from 'react-redux'
@@ -35,7 +35,6 @@ export default function MovieList({ onRefresh }) {
               }}
               className='max-w-[200px] mx-auto cursor-pointer'
             />
-            <button className='btn-primary' onClick={async () => { await deleteMovie(movie._id || movie.id); setMovies(ms => ms.filter(x => (x._id || x.id) !== (movie._id || movie.id))) }}>Delete</button>
           </div>
         ))
       }

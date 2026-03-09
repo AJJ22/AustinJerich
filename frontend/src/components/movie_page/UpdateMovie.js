@@ -51,7 +51,7 @@ export default function UpdateMovie({ onSaved, changeShowUpdateForm }) {
   }
 
   return (
-    <form onSubmit={submit} className='pop-up-box'>
+    <form onSubmit={submit} className='pop-up-box-update-form'>
       <input value={title} className='input-field' onChange={e => setTitle(e.target.value)} placeholder="Title" />
       <input value={director} className='input-field' onChange={e => setDirector(e.target.value)} placeholder="director" />
       

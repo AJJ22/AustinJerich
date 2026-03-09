@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { getMovie } from '../../client-service.js'
+import { getMovie, deleteMovie } from '../../client-service.js'
 import ErrorDisplay from './ErrorDisplay.js'
 import UpdateMovie from './UpdateMovie.js'
 import NavBar from '../NavBar.js'
@@ -87,28 +87,35 @@ export default function MovieDetail() {
           </div>
         </div>
         
-        <div>
-          {!showUpdateForm && (
-            <button onClick={() => {
-                setShowUpdateForm(showUpdateForm => !showUpdateForm)
-                Dispatch(clearErrors())
-              }}
-              className='btn-primary max-w-[200px]'>
-              Update
-            </button>
-          )}
+        <div className='flex'>
+          <div>
+            {!showUpdateForm && (
+              <button onClick={() => {
+                  setShowUpdateForm(showUpdateForm => !showUpdateForm)
+                  Dispatch(clearErrors())
+                }}
+                className='btn-primary max-w-[200px]'>
+                Update
+              </button>
+            )}
+          </div>
 
-          {showUpdateForm && (
-            <UpdateMovie
-              onSaved={(updatedMovie) => {
-                setMovie(updatedMovie)
-                setShowUpdateForm(false)
-              }}
-              changeShowUpdateForm={setShowUpdateForm}
-            />
-          )}
+          <div>
+            {showUpdateForm && (
+              <UpdateMovie
+                onSaved={(updatedMovie) => {
+                  setMovie(updatedMovie)
+                  setShowUpdateForm(false)
+                }}
+                changeShowUpdateForm={setShowUpdateForm}
+              />
+            )}
+          </div>
+          
+          <div>
+            <button className='btn-primary' onClick={async () => { await deleteMovie(movie._id || movie.id); navigate('/movies') }}>Delete</button>
+          </div>
         </div>
-
         <ErrorDisplay />
       </div>
     </div>

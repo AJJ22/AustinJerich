@@ -29,7 +29,7 @@ class MovieRepository {
   async create(m) {
     const sql = neon(`${process.env.DATABASE_URL}`)
     return await sql.query(`INSERT INTO movies (title, director, status, rating, image, genre, comment) VALUES
-                          ('${m.title}', '${m.director}', ${m.status}, ${m.rating}, '${m.image}', ${m.genre}, '${m.comment}');`)
+                          ('${m.title}', '${m.director}', '${m.status}', ${m.rating}, '${m.image}', '${m.genre}', '${m.comment}');`)
   }
 
   /**

@@ -44,6 +44,9 @@
   .pop-up-box {
     @apply flex flex-col absolute my-6 border-2 border-blue-300 rounded p-5 w-fit bg-white z-30;
   }
+  .pop-up-box-update-form {
+    @apply flex flex-col my-6 border-2 border-blue-300 rounded p-5 w-fit bg-white;
+  }
 
 
   .movie-card-tailwind {
