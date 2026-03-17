@@ -1,4 +1,4 @@
-import NavBar from './NavBar.js'
+import { Navigation } from './navigation.js'
 import { useGameLogic } from '../TextGame2019/gameController.js'
 import { useRef, useEffect } from 'react'
 
@@ -20,7 +20,7 @@ export default function TextGame2019() {
 
     return(
         <div>
-            <NavBar />
+            <Navigation />
             
             <div className="page-tailwind">
                 <div className="bg-blue-100 max-w-5xl overflow-y-auto h-dvh">
@@ -37,7 +37,7 @@ export default function TextGame2019() {
                 <div>
                     <input
                         id="input-box"
-                        className="input-field"
+                        className="input-field-2"
                         type="text"
                         value={inputValue}
                         onChange={(e) => setInputValue(e.target.value)}

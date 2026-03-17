@@ -1,10 +1,10 @@
 import { useState } from 'react'
-import NavBar from '../NavBar.js'
+import { Navigation } from '../navigation.js'
 import AddMovieForm from './AddMovieForm.js'
 import MovieList from './MovieList.js'
 import ErrorDisplay from './ErrorDisplay.js'
 import { useDispatch } from 'react-redux'
-import { addError, clearErrors } from '../../utils/errorState.js'
+import { clearErrors } from '../../utils/errorState.js'
 
 export default function MoviesPage() {
   const [showAddNewForm, setShowAddNewForm] = useState(false)
@@ -13,8 +13,8 @@ export default function MoviesPage() {
 
   return (
     <div className={`${showAddNewForm ? 'overlay' : ''}`}>
-        <NavBar />
-
+        <Navigation />
+        
         <div className="page-tailwind">
             <div className='flex items-center justify-between'>
             <h1 className='header'>Movies</h1>

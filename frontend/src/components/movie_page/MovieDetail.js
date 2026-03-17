@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { getMovie, deleteMovie } from '../../client-service.js'
+import { Navigation } from '../navigation.js'
 import ErrorDisplay from './ErrorDisplay.js'
 import UpdateMovie from './UpdateMovie.js'
-import NavBar from '../NavBar.js'
 import { useDispatch } from 'react-redux'
 import { clearErrors } from '../../utils/errorState.js'
 import { StarRating } from 'react-flexible-star-rating'
@@ -30,7 +30,7 @@ export default function MovieDetail() {
 
   return (
     <div>
-      <NavBar />
+      <Navigation />
 
       <div className="page-tailwind flex flex-row">
         <div>

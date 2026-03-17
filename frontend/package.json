@@ -5,6 +5,8 @@
     "@fortawesome/fontawesome-svg-core": "^7.1.0",
     "ajv": "^8.17.1",
     "axios": "^1.13.2",
+    "lucide-react": "^0.577.0",
+    "motion": "^12.36.0",
     "react": "^19.2.1",
     "react-dom": "^19.2.1",
     "react-flexible-star-rating": "^1.0.7",
