@@ -1,6 +1,6 @@
 import { motion } from 'motion/react'
 import { ArrowRight, Download } from 'lucide-react'
-import profileImage from '../../images/156x182.jpg'
+import profileImage from '../images/156x182.jpg'
 
 export function IntroSection() {
   return (
