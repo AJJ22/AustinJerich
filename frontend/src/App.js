@@ -4,7 +4,6 @@ import TextGame2019 from './components/TextGame2019'
 import Movie from './components/movie_page/Movie'
 import MovieDetail from './components/movie_page/MovieDetail'
 import { Analytics } from "@vercel/analytics/react"
-import './App.css'
 
 
 function App(){
