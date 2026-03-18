@@ -1,5 +1,4 @@
 import { HashRouter as Router, Routes, Route, Navigate } from "react-router-dom"
-//import Experience from './components/Experience'
 import Home from './components/Home'
 import TextGame2019 from './components/TextGame2019'
 import Movie from './components/movie_page/Movie'

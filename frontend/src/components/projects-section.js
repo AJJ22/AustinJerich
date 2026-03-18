@@ -77,6 +77,7 @@ export function ProjectsSection() {
                       ))}
                     </div>
                     
+                    {/* use if i am not going to embed the project in my portfolio, or if i just want to link the github */}
                     {/* 
                     <div className="flex gap-4">
                       <button className="flex items-center gap-2 text-slate-600 hover:text-blue-600 transition-colors">
@@ -99,6 +100,7 @@ export function ProjectsSection() {
           ))}
         </div>
         
+        {/* add back in when i have more than 3 projects */}
         {/* 
         <motion.div
           initial={{ opacity: 0, y: 20 }}

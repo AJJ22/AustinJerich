@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer components {
+  .root, html, body {
+    @apply bg-[#d8d8d4];
+  }
+
   .btn-primary {
     @apply m-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium max-w-[200px];
   }
