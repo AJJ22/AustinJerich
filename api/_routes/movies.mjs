@@ -9,8 +9,11 @@ function createRouter(repository = movieRepository) {
   //get all movies
   router.get('/', async (req, res) => {
     try{
-      const results = await repository.getAll(50)
-      return res.status(200).json(results)
+      console.log("query: ", req.query)
+      const result = await (Object.keys(req.query).length > 0 ? repository.getAllWithFilters(req.query) : repository.getAll(50))
+      const status = result ? 200 : 404
+
+      return res.status(status).json(result)
     }
     catch(e){
       console.log(e)

@@ -12,6 +12,8 @@ async function request(path, opts) {
 
 export const getMovies = () => request('/movies')
 export const getMovie = id => request(`/movies/${id}`)
+export const filterMovieList = filters => request(`/movies?${filters}`)
+
 export const addMovie = movie => request('/movies', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },

@@ -4,9 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { clearErrors } from '../../utils/errorState'
 import { useDispatch } from 'react-redux'
 
-export default function MovieList({ onRefresh }) {
-  const [movies, setMovies] = useState([])
-  const [loading, setLoading] = useState(true)
+export default function MovieList({ onRefresh, movies, setMovies, loading, setLoading }) {
   const navigate = useNavigate()
   const Dispatch = useDispatch()
 
@@ -17,7 +15,6 @@ export default function MovieList({ onRefresh }) {
   }, [onRefresh])
 
   if (loading) return <div>Loading movies...</div>
-
 
 
   return (
@@ -41,7 +38,3 @@ export default function MovieList({ onRefresh }) {
     </div>
   )
 }
-
-
-
-    

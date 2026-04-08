@@ -56,6 +56,11 @@
   }
 
 
+  .filter-box {
+    @apply flex items-center justify-center;
+  }
+
+
   .movie-card-tailwind {
     @apply flex flex-col items-center mt-3 mb-3;
   }

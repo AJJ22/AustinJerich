@@ -1,4 +1,5 @@
 import { neon } from '@neondatabase/serverless'
+import { buildWhereClause } from './repoHelperFunctions.mjs'
 
 class MovieRepository {
   /**
@@ -9,6 +10,19 @@ class MovieRepository {
   async getAll(limit = 50) {
     const sql = neon(`${process.env.DATABASE_URL}`)
     return await sql.query(`SELECT * FROM movies;`)
+  }
+
+  /**
+   * @param {Object} queryParams - params to filter with
+   * @returns {Promise<Array>} Array of movies
+   */
+  async getAllWithFilters(queryParams) {
+    const sql = neon(`${process.env.DATABASE_URL}`)
+    const whereClause = buildWhereClause(queryParams)
+
+    console.log(`SELECT * FROM movies WHERE ${whereClause};`)
+
+    return await sql.query(`SELECT * FROM movies WHERE ${whereClause};`)
   }
 
   /**
