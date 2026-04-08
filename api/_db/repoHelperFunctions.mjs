@@ -4,7 +4,11 @@ export function buildWhereClause(params) {
 
     for(const [key, value] of Object.entries(params)) {
         const ANDKeyword = first ? '' : ' AND '
-        whereClause = whereClause + `${ANDKeyword}${key} LIKE '%${value}%'`
+        const valueParam = key === "rating" ? `${value}` : `'%${value}%'`
+        const comparisionOperator = key === "rating" ? '=' : 'LIKE'
+
+        whereClause = whereClause + `${ANDKeyword}${key} ${comparisionOperator} ${valueParam}`
+        
         first = false
     }
 
